@@ -1,0 +1,42 @@
+---
+title: "Lab1"
+author: "Jenn Lewis"
+date: "1/11/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(rio)
+library(tidyverse)
+library(here)
+library(dplyr)
+library(knitr)
+library(forcats)
+
+list(here())
+data <- import(here("data", "rstats_tweets.rds"))
+```
+
+```{r Commit 2}
+data %>%
+  count(screen_name, sort = TRUE, name = "n") %>%
+  dplyr::slice(1:25) %>%
+  mutate(screen_name = fct_reorder(screen_name,n)) %>%
+  ggplot(aes(screen_name, n)) +
+  geom_col() +
+  coord_flip()
+
+  
+
+
+
+```
+
+
+
+```{r Commit 2 plot}
+```
+
+
