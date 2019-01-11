@@ -25,8 +25,15 @@ data %>%
   dplyr::slice(1:25) %>%
   mutate(screen_name = fct_reorder(screen_name,n)) %>%
   ggplot(aes(screen_name, n)) +
-  geom_col() +
-  coord_flip()
+  geom_col(fill = "cornflowerblue") +
+  coord_flip() +
+  theme_minimal(base_size = 11) +
+  opts_chunk$set(fig.width = 10, fig.height = 10) +
+  labs(title = "Most prolific #rstats tweeters", 
+       subtitle = "Top 25 screen names displayed",
+       x = "Twitter Screen Names",
+       y = "Count",
+       caption = "Data from Mike Kearny, distributed via #tidytuesday")
 
   
 
